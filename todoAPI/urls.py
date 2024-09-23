@@ -6,8 +6,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     # djoser urls for user management
-    path("auth/", include('djoser.urls')),
+    path("api/auth/", include('djoser.urls')),
 
     # djoser urls for JWT token endpoints
-    path("auth/", include('djoser.urls.jwt')),
+    path("api/auth/", include('djoser.urls.jwt')),
 ]

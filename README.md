@@ -35,6 +35,129 @@ Security & CORS: Integrated with django-cors-headers and Django security middlew
 
 ## Endpoints
 
+### Testing endpoints using postman
+1. **Register a New user**: create a POST request to /api/auth/users with the following JSON payload
+
+```
+
+{
+    "email": "user4@example.com",
+    "username": "tes4tuser",
+    "password": "password123!",
+    "re_password": "password123!"
+}
+
+```
+Response:
+
+```
+
+{
+  "username": "tes4tuser",
+  "email": "user4@example.com",
+  "id": "6fd3a24c-b7fa-447c-8b1a-9210ccf10204"
+}
+
+```
+
+2. **Login**: send a POST request to /api/auth/jwt/create/ with the following JSON payload:
+
+```
+
+{
+    "email": "testuser@example.com",
+    "password": "strong_password_123"
+}
+
+```
+
+Response:
+```
+
+{
+    "access": "<your_access_token>",
+    "refresh": "<your_refresh_token>"
+}
+```
+
+3. **User Information**: send a GET request to api/auth/users/me/ and add an authorization header:
+
+```
+
+Key: Authorization
+Value: Bearer <your_access_token>
+
+```
+
+Response:
+```
+{
+  "username": "tes4tuser",
+  "id": "6fd3a24c-b7fa-447c-8b1a-9210ccf10204",
+  "email": "user4@example.com"
+}
+```
+4. **Update User info**: send a PUT reuest to api/auth/users/me and add an authorization header, with the following JSON payload
+
+```
+{
+    "email": "newemail@example.com",
+    "username": "newusername"
+}
+
+```
+Response: updated the user profile
+```
+{
+  "username": "newusername",
+  "id": "6fd3a24c-b7fa-447c-8b1a-9210ccf10204",
+  "email": "user4@example.com"
+}
+```
+
+5. **Change password**: send a POST request to api/auth/users/set_password/ add an authorization header with the following JSON payload:
+
+```
+{
+    "current_password": "strong_password_123",
+    "new_password": "new_strong_password_123",
+    "re_new_password": "new_strong_password_123"
+}
+
+```
+Response: 
+
+```
+{
+    "detail": "New password has been saved."
+}
+```
+6. **Token Refresh**: send a POST request to api/auth/jwt/refresh/ with the following JSON payload:
+```
+{
+    "refresh": "<your_refresh_token>"
+}
+
+```
+Response:
+```
+{
+    "access": "<new_access_token>"
+}
+
+```
+
+7. **Password Reset**: send a POST request to api/auth/users/reset_password/ with payload:
+```
+{
+    "email": "user@example.com"
+}
+
+```
+
+Response:
+
+
 ## Future Enhancements
 1. **Build a frontend**- build a frontend using frameworks like React. 
 
