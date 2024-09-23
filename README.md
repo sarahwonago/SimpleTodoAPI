@@ -27,6 +27,7 @@ Security & CORS: Integrated with django-cors-headers and Django security middlew
 - **Database**: Default(sqlite). You can use PostgreSQL
 - **Caching**: Redis
 - **Task Scheduling & Background Jobs**: Celery with Redis
+- **User Management**: djoser, you can use dj-rest-auth, django-allauth
 - **Authentication**: JWT via djangorestframework-simplejwt
 - **API Documentation**: Swagger/OpenAPI (drf-spectacular)
 - **Security**: Django Security Middleware, django-cors-headers
