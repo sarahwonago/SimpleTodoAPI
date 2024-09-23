@@ -34,6 +34,17 @@ Security & CORS: Integrated with django-cors-headers and Django security middlew
 - **Deployment**: Docker, Gunicorn, Nginx
 
 ## Endpoints
+| Method | Endpoint                             | Description                                     |
+|--------|--------------------------------------|-------------------------------------------------|
+| POST   | `/api/auth/users/`                  | Register a new user                            |
+| POST   | `/api/auth/jwt/create/`             | Login and get JWT tokens                       |
+| POST   | `/api/auth/jwt/refresh/`            | Refresh JWT access token                       |
+| GET    | `/api/auth/users/me/`               | Retrieve current user's information            |
+| PUT    | `/api/auth/users/me/`               | Update the current user's profile             |
+| POST   | `/api/auth/users/set_password/`     | Change the current user's password             |
+| POST   | `/api/auth/users/reset_password/`   | Request a password reset email                 |
+
+
 
 ### Testing endpoints using postman
 1. **Register a New user**: create a POST request to /api/auth/users with the following JSON payload
@@ -156,6 +167,7 @@ Response:
 ```
 
 Response:
+
 
 
 ## Future Enhancements
