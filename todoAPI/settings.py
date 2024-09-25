@@ -50,6 +50,13 @@ INSTALLED_APPS = [
 
     # custom apps
     "account.apps.AccountConfig",
+    "todo.apps.TodoConfig",
+
+    # documentation
+    "drf_spectacular",
+
+    # filters
+    "django_filters",
 ]
 
 AUTH_USER_MODEL = "account.CustomUser"
@@ -153,9 +160,11 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
 
-    # 'DEFAULT_FILTER_BACKENDS':(
-    #     'django_filters.rest_framework.DjangoFilterBackend',
-    # ),
+    'DEFAULT_FILTER_BACKENDS':(
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+
+    'DEFAULT_SCHEMA_CLASS': "drf_spectacular.openapi.AutoSchema",
 
 }
 
@@ -187,4 +196,9 @@ DJOSER = {
     }
 }
 
-
+# spectacular settings
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Simple Todo API Project",
+    "DESCRIPTION": "A simple todo api for managing tasks.",
+    "VERSION": "1.0.0"
+}
