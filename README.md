@@ -49,15 +49,22 @@ Security & CORS: Integrated with django-cors-headers and Django security middlew
 - **Deployment**: Docker, Gunicorn, Nginx
 
 ## Endpoints
+
 | Method | Endpoint                             | Description                                     |
 |--------|--------------------------------------|-------------------------------------------------|
 | POST   | `/api/auth/users/`                  | Register a new user                            |
 | POST   | `/api/auth/jwt/create/`             | Login and get JWT tokens                       |
 | POST   | `/api/auth/jwt/refresh/`            | Refresh JWT access token                       |
 | GET    | `/api/auth/users/me/`               | Retrieve current user's information            |
-| PUT    | `/api/auth/users/me/`               | Update the current user's profile             |
+| PUT    | `/api/auth/users/me/`               | Update the current user's profile              |
 | POST   | `/api/auth/users/set_password/`     | Change the current user's password             |
 | POST   | `/api/auth/users/reset_password/`   | Request a password reset email                 |
+| POST   | `/api/tasks/`                       | Create a new task                              |
+| GET    | `/api/tasks/`                       | Retrieve all tasks for the authenticated user  |
+| GET    | `/api/tasks/{id}/`                  | Retrieve details for a specific task           |
+| PUT    | `/api/tasks/{id}/`                  | Update an existing task                        |
+| DELETE | `/api/tasks/{id}/`                  | Delete a task                                  |
+
 
 
 
