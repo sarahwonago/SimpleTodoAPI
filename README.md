@@ -183,14 +183,85 @@ Response:
 
 Response:
 
-8. **Create a new task**: send a POST request to api/task/ with the folliwing payload:
+8. **Create a new task**: send a POST request to api/tasks/ with the folliwing payload:
 
 ```
+{
+  "title": "New Task",
+  "description": "A task with tags",
+  "status": "pending",
+  "priority": "high",
+  "due_date": "2024-12-01T12:00:00Z",
+  "tags": ["work", "urgent"]
+}
 
 ```
 
 Response:
+```
+{
+  "id": "32af09ab-2e12-4eb2-b53a-38432fbe6301",
+  "user": "zaza",
+  "tags": [
+    "work",
+    "urgent"
+  ],
+  "title": "New Task",
+  "description": "A task with tags",
+  "status": "pending",
+  "priority": "high",
+  "recurrence": "none",
+  "recurrence_end": null,
+  "due_date": "2024-12-01T12:00:00Z",
+  "start_time": null,
+  "end_time": null,
+  "time_spent": null,
+  "created_at": "2024-09-25T13:12:00.532205Z"
+}
+```
 
+9. **Fetch tasks**: send a GET request to api/tasks/ with the Authorization header:
+
+Response:
+
+```
+[
+  {
+    "id": "d4937a5a-354a-40d9-b54e-c879e5aa4330",
+    "user": "zaza",
+    "title": "Learn Celery",
+    "description": "Supposed to learn celery.",
+    "status": "pending",
+    "priority": "medium",
+    "recurrence": "none",
+    "recurrence_end": null,
+    "due_date": null,
+    "start_time": null,
+    "end_time": null,
+    "time_spent": null,
+    "created_at": "2024-09-25T12:03:57.370501Z",
+    "tags": []
+  },
+  {
+    "id": "b4038c30-11dd-40f2-a9ce-c64eba6bad24",
+    "user": "zaza",
+    "title": "Learn Redis",
+    "description": "Learn redis and integrate in your project",
+    "status": "in_progress",
+    "priority": "high",
+    "recurrence": "daily",
+    "recurrence_end": "2024-09-28T12:16:01Z",
+    "due_date": "2024-09-25T12:16:47Z",
+    "start_time": "12:16:54",
+    "end_time": "18:00:00",
+    "time_spent": null,
+    "created_at": "2024-09-25T12:17:05.946469Z",
+    "tags": []
+  }
+]
+```
+
+10. 
 
 
 ## Future Enhancements

@@ -17,7 +17,7 @@ class Tag(models.Model):
     """
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
     def __str__(self) -> str:
         return self.name
@@ -94,7 +94,7 @@ class Task(models.Model):
     recurrence = models.CharField(max_length=15, choices=RECURRING_CHOICES, default='none')
     recurrence_end = models.DateTimeField(null=True, blank=True) #specify when the task should stop recurring
     due_date = models.DateTimeField(null=True, blank=True)
-    tags = models.ManyToManyField(Tag, related_name="tags")
+    tags = models.ManyToManyField(Tag, related_name="tags", blank=True)
     start_time = models.TimeField(null=True, blank=True)
     end_time = models.TimeField(null=True, blank=True)
     time_spent= models.DurationField(null=True, blank=True)

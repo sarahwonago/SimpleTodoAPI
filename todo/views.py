@@ -29,6 +29,9 @@ class TaskListCreateView(APIView):
         """
         tasks = Task.objects.filter(user=request.user)
 
+        if not tasks:
+            return Response({"detail":"All clean. You have no tasks today."}, status=status.HTTP_200_OK)
+
         # Apply filters
         status_filter = request.query_params.get('status')
         priority_filter = request.query_params.get('priority')
@@ -51,13 +54,6 @@ class TaskListCreateView(APIView):
         serializer = TaskSerializer(data=request.data)
 
         if serializer.is_valid():
-            # checks if due date is in the past
-            if serializer.validated_data['due_date'] <= timezone.now():
-                return Response(
-                    {"error": "Due date cannot be in the past."},
-                    status=status.HTTP_400_BAD_REQUEST
-                )
-            
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

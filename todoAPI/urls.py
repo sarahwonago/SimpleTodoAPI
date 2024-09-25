@@ -18,5 +18,5 @@ urlpatterns = [
     path("api/schema/swagger/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger"),
 
     # Task Management
-    path("api/task/", include('todo.urls')),
+    path("api/tasks/", include('todo.urls')),
 ]
