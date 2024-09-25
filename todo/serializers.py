@@ -105,7 +105,9 @@ class TaskSerializer(serializers.ModelSerializer):
             # Clear and reassign tags
             instance.tags.set(self._get_or_create_tags(tags_data))
 
-        return instance
+        return super().update(instance, validated_data)
+    
+       
 
     def _get_or_create_tags(self, tags_data):
         """

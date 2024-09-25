@@ -261,7 +261,77 @@ Response:
 ]
 ```
 
-10. 
+10. **Detail task**: send a GET request to api/tasks/id/ with authorization headers:
+
+Response:
+```
+{
+  "id": "32af09ab-2e12-4eb2-b53a-38432fbe6301",
+  "user": "zaza",
+  "tags": [
+    "work",
+    "urgent"
+  ],
+  "title": "New Task",
+  "description": "A task with tags",
+  "status": "pending",
+  "priority": "high",
+  "recurrence": "none",
+  "recurrence_end": null,
+  "due_date": "2024-12-01T12:00:00Z",
+  "start_time": null,
+  "end_time": null,
+  "time_spent": null,
+  "created_at": "2024-09-25T13:12:00.532205Z"
+}
+```
+
+11. **Update task**: send a PUT request to api/tasks/id/ with the following JSON payload 
+
+```
+
+{
+  "title": "New Task Updated",
+  "description": "A task with tags updated",
+  "status": "done",
+  "priority": "high",
+  "tags":["work"]
+}
+```
+
+Response:
+
+```
+
+{
+  "id": "32af09ab-2e12-4eb2-b53a-38432fbe6301",
+  "user": "zaza",
+  "tags": [
+    "work"
+  ],
+  "title": "New Task Updated",
+  "description": "A task with tags updated",
+  "status": "done",
+  "priority": "high",
+  "recurrence": "none",
+  "recurrence_end": null,
+  "due_date": "2024-12-01T12:00:00Z",
+  "start_time": null,
+  "end_time": null,
+  "time_spent": null,
+  "created_at": "2024-09-25T13:12:00.532205Z"
+}
+```
+
+12. **Delete task**: send a DELETE request to api/tasks/id/ with authorization headers:
+
+Response:
+
+```
+{
+  "detail": "Task deleted successfully"
+}
+```
 
 
 ## Future Enhancements
