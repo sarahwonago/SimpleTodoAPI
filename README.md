@@ -64,6 +64,12 @@ Security & CORS: Integrated with django-cors-headers and Django security middlew
 | GET    | `/api/tasks/{id}/`                  | Retrieve details for a specific task           |
 | PUT    | `/api/tasks/{id}/`                  | Update an existing task                        |
 | DELETE | `/api/tasks/{id}/`                  | Delete a task                                  |
+| POST   | `/api/tasks/tags/`                  | Create a new tag                           |
+| GET    | `/api/tasks/tags/`                   | Retrieve all tags  |
+| GET    | `/api/tasks/tags/{id}/`               | Retrieve details for a specific tag          |
+| PUT    | `/api/tasks/tag/{id}/`                  | Update an existing tag                   |
+| DELETE | `/api/tasks/tags/{id}/`                  | Delete a tag                                 |
+
 
 
 
@@ -340,6 +346,65 @@ Response:
 }
 ```
 
+13. **List tags**: send a GET request to api/tasks/tags/ with authorization headers:
+
+Response:
+
+```
+[
+  {
+    "id": "908c1aca-267e-491e-bf61-73754be55c91",
+    "name": "urgent"
+  },
+  {
+    "id": "77d5b605-4c30-44c6-8496-e28f06b99329",
+    "name": "coding"
+  }
+]
+```
+
+14. **Create a tag**: send a POST request to api/tasks/tags/ with JSON Payload:
+
+```
+
+{
+  "name":"work"
+}
+
+```
+
+Response:
+```
+{
+  "id": "513a82b8-2a9c-4071-9584-5cc5d12e8196",
+  "name": "work"
+}
+```
+
+15. **Update a tag**: send a PUT request to api/tasks/tags/{id}/ with JSON Payload:
+
+```
+{
+  "name":"work-updated"
+}
+
+```
+
+Response:
+```
+{
+  "id": "513a82b8-2a9c-4071-9584-5cc5d12e8196",
+  "name": "work-updated"
+}
+```
+
+16. **Delete a tag**: send a DELETE request to api/tasks/tags/{id}/ with authorization headers:
+
+Response:
+
+```
+
+```
 
 ## Future Enhancements
 1. **Build a frontend**- build a frontend using frameworks like React. 

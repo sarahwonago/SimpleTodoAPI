@@ -11,15 +11,19 @@ click==8.1.7
 click-didyoumean==0.3.1
 click-plugins==1.1.1
 click-repl==0.3.0
+cron-descriptor==1.4.5
 cryptography==43.0.1
 defusedxml==0.8.0rc2
 dj-rest-auth==6.0.0
 Django==5.1.1
 django-allauth==65.0.0
+django-celery-beat==2.7.0
+django-celery-results==2.5.1
 django-cors-headers==4.4.0
 django-filter==24.3
 django-redis==5.4.0
 django-templated-mail==1.1.1
+django-timezone-field==7.0
 djangorestframework==3.15.2
 djangorestframework-simplejwt==5.3.1
 djoser==2.2.3
@@ -40,6 +44,7 @@ pycparser==2.22
 PyJWT==2.9.0
 pytest==8.3.3
 pytest-django==4.9.0
+python-crontab==3.2.0
 python-dateutil==2.9.0.post0
 python3-openid==3.2.0
 PyYAML==6.0.2

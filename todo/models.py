@@ -84,6 +84,8 @@ class Task(models.Model):
         ('monthly', 'Monthly')
     ]
 
+    class Meta:
+        ordering = ["-created_at"]
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tasks")

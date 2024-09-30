@@ -4,10 +4,13 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.utils import timezone
 from rest_framework.permissions import IsAuthenticated
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import viewsets
+
 
 from .permissions import IsOwner
-from .models import Task
-from .serializers import TaskSerializer
+from .models import Task, Tag
+from .serializers import TaskSerializer, TagSerializer
 
 
 class TaskListCreateView(APIView):
@@ -20,6 +23,8 @@ class TaskListCreateView(APIView):
     """
   
     permission_classes = [IsAuthenticated, IsOwner]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['priority']
 
     def get(self, request):
 
@@ -32,17 +37,7 @@ class TaskListCreateView(APIView):
         if not tasks:
             return Response({"detail":"All clean. You have no tasks today."}, status=status.HTTP_200_OK)
 
-        # Apply filters
-        status_filter = request.query_params.get('status')
-        priority_filter = request.query_params.get('priority')
-        
-
-        if status_filter:
-            tasks = tasks.filter(status=status_filter)
-        if priority_filter:
-            tasks = tasks.filter(priority=priority_filter)
-
-
+       
         serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -122,6 +117,11 @@ class TaskDetailView(APIView):
         return Response({"detail":"Task deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
 
 
+class TagViewSet(viewsets.ModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+    
 class TaskAnalyticsView(APIView):
     """
     API view to provide task analytics for authenticated users.

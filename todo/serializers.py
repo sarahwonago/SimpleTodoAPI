@@ -32,6 +32,7 @@ class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = [
+            "id",
             "name"
         ]
 
@@ -61,10 +62,10 @@ class TaskSerializer(serializers.ModelSerializer):
 
     # Accept tag names as a list of strings instead of nested objects
     tags = serializers.SlugRelatedField(
-        many=True,
-        slug_field='name',
-        queryset=Tag.objects.all()
-    )
+            queryset=Tag.objects.all(),
+            slug_field='name',
+            many=True
+        )
 
     class Meta:
         model = Task
@@ -105,7 +106,7 @@ class TaskSerializer(serializers.ModelSerializer):
             # Clear and reassign tags
             instance.tags.set(self._get_or_create_tags(tags_data))
 
-        return super().update(instance, validated_data)
+        return instance
     
        
 
